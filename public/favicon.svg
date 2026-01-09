@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Fondo hexagonal -->
+  <path d="M50 5 L90 27.5 L90 72.5 L50 95 L10 72.5 L10 27.5 Z" fill="#1967D2"/>
+
+  <!-- Letra N -->
+  <text x="50" y="70" font-family="Inter, sans-serif" font-size="60" font-weight="700" fill="white" text-anchor="middle">N</text>
+</svg>

@@ -1,0 +1,51 @@
+# Google Cloud Build configuration for Firebase Hosting deployment
+# Para usar: gcloud builds submit --config cloudbuild.yaml
+
+steps:
+  # Paso 1: Instalar dependencias
+  - name: 'node:18'
+    id: 'install-dependencies'
+    entrypoint: npm
+    args: ['ci']
+
+  # Paso 2: Build del proyecto
+  - name: 'node:18'
+    id: 'build-project'
+    entrypoint: npm
+    args: ['run', 'build']
+    env:
+      - 'VITE_SUPABASE_URL=${_VITE_SUPABASE_URL}'
+      - 'VITE_SUPABASE_PUBLISHABLE_KEY=${_VITE_SUPABASE_PUBLISHABLE_KEY}'
+      - 'VITE_SUPABASE_PROJECT_ID=${_VITE_SUPABASE_PROJECT_ID}'
+
+  # Paso 3: Deploy a Firebase Hosting
+  - name: 'gcr.io/$PROJECT_ID/firebase'
+    id: 'deploy-firebase'
+    args:
+      - 'deploy'
+      - '--only'
+      - 'hosting'
+      - '--project'
+      - '${_FIREBASE_PROJECT_ID}'
+      - '--token'
+      - '${_FIREBASE_TOKEN}'
+
+# Variables de sustitución (configurar en Cloud Build Triggers o CLI)
+substitutions:
+  _FIREBASE_PROJECT_ID: 'nivex-cloud'
+  _FIREBASE_TOKEN: ''  # Obtener con: firebase login:ci
+  _VITE_SUPABASE_URL: ''
+  _VITE_SUPABASE_PUBLISHABLE_KEY: ''
+  _VITE_SUPABASE_PROJECT_ID: ''
+
+# Configuración de timeout y opciones
+timeout: '1200s'
+options:
+  logging: CLOUD_LOGGING_ONLY
+  machineType: 'E2_HIGHCPU_8'
+
+# Tags para organización
+tags:
+  - 'nivex-cloud'
+  - 'frontend-deploy'
+  - 'firebase-hosting'
