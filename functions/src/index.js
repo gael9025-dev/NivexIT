@@ -53,7 +53,7 @@ Tu objetivo es:
 
 Información de contacto:
 - Email: contacto@nivex.cloud
-- WhatsApp: +52 56 1190 7195
+- WhatsApp: +52 55 6669 9281
 - Ubicación: Ciudad de México, México
 - Sitio web: nivex.cloud
 

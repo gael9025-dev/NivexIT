@@ -10,8 +10,8 @@ Este archivo contiene **TODAS** las variables y configuraciones que necesitas pa
 ```
 ✅ EMPRESA_NOMBRE=Nivex IT
 ✅ EMPRESA_EMAIL=contacto@nivex.cloud
-✅ EMPRESA_TELEFONO=+52 56 1190 7195
-✅ EMPRESA_WHATSAPP=+52 56 1190 7195
+✅ EMPRESA_TELEFONO=+52 55 6669 9281
+✅ EMPRESA_WHATSAPP=+52 55 6669 9281
 ✅ EMPRESA_DIRECCION=Ciudad de México, México
 ✅ EMPRESA_SITIO_WEB=nivex.cloud
 ```

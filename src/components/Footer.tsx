@@ -73,34 +73,34 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="tel:+525611907195" className="hover:text-accent transition-colors">
-                  +52 56 1190 7195
+                <a href="tel:+525566699281" className="hover:text-accent transition-colors">
+                  +52 55 6669 9281
                 </a>
               </li>
               <li>Ciudad de México, México</li>
             </ul>
             <div className="flex gap-4 mt-4">
-              <a 
-                href="https://www.linkedin.com/company/nivex-it" 
+              <a
+                href="https://www.linkedin.com/company/nivex-it"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-accent transition-colors" 
+                className="text-muted-foreground hover:text-accent transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a 
-                href="https://github.com/nivex-it" 
+              <a
+                href="https://github.com/nivex-it"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-accent transition-colors" 
+                className="text-muted-foreground hover:text-accent transition-colors"
                 aria-label="GitHub"
               >
                 <Github className="w-5 h-5" />
               </a>
-              <a 
-                href="mailto:sales@nivex.cloud" 
-                className="text-muted-foreground hover:text-accent transition-colors" 
+              <a
+                href="mailto:sales@nivex.cloud"
+                className="text-muted-foreground hover:text-accent transition-colors"
                 aria-label="Email"
               >
                 <Mail className="w-5 h-5" />

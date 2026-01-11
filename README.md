@@ -202,7 +202,7 @@ firebase init hosting --force
 ## 📞 Contacto
 
 - **Email**: contacto@nivex.cloud
-- **WhatsApp**: +52 56 1190 7195
+- **WhatsApp**: +52 55 6669 9281
 - **Sitio**: [nivex.cloud](https://nivex.cloud)
 
 ## 📄 Licencia
