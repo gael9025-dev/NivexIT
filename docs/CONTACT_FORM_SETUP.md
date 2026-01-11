@@ -25,7 +25,7 @@ Guía rápida para configurar dónde se guardan los contactos del formulario.
 
 1. **Habilitar Firestore**
    ```bash
-   # Ir a: https://console.firebase.google.com/project/nivex-cloud/firestore
+   # Ir a: https://console.firebase.google.com/project/nivex-it/firestore
    # Clic en "Create database"
    # Mode: Production
    # Location: southamerica-east1 (São Paulo)
@@ -39,9 +39,9 @@ Guía rápida para configurar dónde se guardan los contactos del formulario.
 3. **Actualizar .env**
    ```env
    VITE_FIREBASE_API_KEY=AIza...
-   VITE_FIREBASE_AUTH_DOMAIN=nivex-cloud.firebaseapp.com
-   VITE_FIREBASE_PROJECT_ID=nivex-cloud
-   VITE_FIREBASE_STORAGE_BUCKET=nivex-cloud.appspot.com
+   VITE_FIREBASE_AUTH_DOMAIN=nivex-it.firebaseapp.com
+   VITE_FIREBASE_PROJECT_ID=nivex-it
+   VITE_FIREBASE_STORAGE_BUCKET=nivex-it.appspot.com
    VITE_FIREBASE_MESSAGING_SENDER_ID=123456789
    VITE_FIREBASE_APP_ID=1:123:web:abc
    ```

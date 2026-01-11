@@ -4,7 +4,7 @@ Sitio web oficial de **Nivex IT**, consultora especializada en **Google Cloud Pl
 
 ## 🚀 Stack Tecnológico
 
-- **Framework**: React 18 + TypeScript
+- **Framework**: React 20 + TypeScript
 - **Build Tool**: Vite 5.4
 - **Styling**: Tailwind CSS 3.4 + shadcn/ui
 - **Backend**: Supabase (PostgreSQL + Edge Functions)
@@ -94,7 +94,7 @@ VITE_SUPABASE_URL=https://tu-proyecto.supabase.co
 VITE_SUPABASE_PUBLISHABLE_KEY=tu-public-anon-key
 
 # Google Cloud (para Vertex AI - opcional)
-VITE_GCP_PROJECT_ID=nivex-cloud
+VITE_GCP_PROJECT_ID=nivex-it
 VITE_VERTEX_AI_LOCATION=us-central1
 ```
 
@@ -137,7 +137,7 @@ gcloud services enable aiplatform.googleapis.com
 2. Descomentar código en `supabase/functions/chat/index.ts`
 3. Configurar secretos en Supabase:
 ```bash
-supabase secrets set GCP_PROJECT_ID=nivex-cloud
+supabase secrets set GCP_PROJECT_ID=nivex-it
 supabase secrets set GCP_ACCESS_TOKEN=<service-account-token>
 ```
 

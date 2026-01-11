@@ -6,7 +6,7 @@ import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import Chatbot from "@/components/Chatbot";
+// import Chatbot from "@/components/Chatbot"; // TODO: Reactivar cuando Firebase Functions esté funcionando correctamente
 
 const Index = () => {
   return (
@@ -19,7 +19,7 @@ const Index = () => {
       <About />
       <Contact />
       <Footer />
-      <Chatbot />
+      {/* <Chatbot /> */} {/* TODO: Reactivar cuando Firebase Functions esté funcionando correctamente */}
     </div>
   );
 };

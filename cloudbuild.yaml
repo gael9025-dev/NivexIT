@@ -32,7 +32,7 @@ steps:
 
 # Variables de sustitución (configurar en Cloud Build Triggers o CLI)
 substitutions:
-  _FIREBASE_PROJECT_ID: 'nivex-cloud'
+  _FIREBASE_PROJECT_ID: 'nivex-it'
   _FIREBASE_TOKEN: ''  # Obtener con: firebase login:ci
   _VITE_SUPABASE_URL: ''
   _VITE_SUPABASE_PUBLISHABLE_KEY: ''
@@ -46,6 +46,6 @@ options:
 
 # Tags para organización
 tags:
-  - 'nivex-cloud'
+  - 'nivex-it'
   - 'frontend-deploy'
   - 'firebase-hosting'

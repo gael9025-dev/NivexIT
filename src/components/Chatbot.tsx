@@ -39,19 +39,19 @@ const Chatbot = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch(
-        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
-          },
-          body: JSON.stringify({
-            messages: [...messages, userMessage],
-          }),
-        }
-      );
+      // Usar Firebase Functions v2 para chatbot con Vertex AI
+      const functionUrl = import.meta.env.VITE_FIREBASE_FUNCTIONS_URL ||
+                         `https://chat-2i3wobldlq-uc.a.run.app`;
+
+      const response = await fetch(functionUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          messages: [...messages, userMessage],
+        }),
+      });
 
       if (response.status === 429) {
         toast({
@@ -63,70 +63,20 @@ const Chatbot = () => {
         return;
       }
 
-      if (response.status === 402) {
-        toast({
-          title: "Servicio no disponible",
-          description: "El servicio de chat está temporalmente no disponible.",
-          variant: "destructive",
-        });
-        setIsLoading(false);
-        return;
-      }
-
       if (!response.ok) {
         throw new Error("Error al comunicarse con el asistente");
       }
 
-      const reader = response.body?.getReader();
-      const decoder = new TextDecoder();
-      let assistantMessage = "";
+      const data = await response.json();
 
-      if (reader) {
-        let buffer = "";
-
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
-
-          buffer += decoder.decode(value, { stream: true });
-          let newlineIndex: number;
-
-          while ((newlineIndex = buffer.indexOf("\n")) !== -1) {
-            let line = buffer.slice(0, newlineIndex);
-            buffer = buffer.slice(newlineIndex + 1);
-
-            if (line.endsWith("\r")) line = line.slice(0, -1);
-            if (line.startsWith(":") || line.trim() === "") continue;
-            if (!line.startsWith("data: ")) continue;
-
-            const jsonStr = line.slice(6).trim();
-            if (jsonStr === "[DONE]") break;
-
-            try {
-              const parsed = JSON.parse(jsonStr);
-              const content = parsed.choices?.[0]?.delta?.content;
-              
-              if (content) {
-                assistantMessage += content;
-                setMessages((prev) => {
-                  const lastMsg = prev[prev.length - 1];
-                  if (lastMsg?.role === "assistant") {
-                    return prev.map((m, i) =>
-                      i === prev.length - 1
-                        ? { ...m, content: assistantMessage }
-                        : m
-                    );
-                  }
-                  return [...prev, { role: "assistant", content: assistantMessage }];
-                });
-              }
-            } catch {
-              // Incomplete JSON, wait for more data
-              buffer = line + "\n" + buffer;
-              break;
-            }
-          }
-        }
+      if (data.content) {
+        const assistantMessage: Message = {
+          role: "assistant",
+          content: data.content,
+        };
+        setMessages((prev) => [...prev, assistantMessage]);
+      } else {
+        throw new Error("Respuesta inválida del servidor");
       }
     } catch (error) {
       console.error("Error:", error);

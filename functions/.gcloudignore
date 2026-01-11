@@ -1,0 +1,29 @@
+# Compiled output
+lib/
+*.js.map
+
+# Node modules
+node_modules/
+
+# TypeScript source (we only need compiled JS)
+# Commented out because we need src/ for Cloud Build to compile
+# src/
+# tsconfig.json
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Git
+.git/
+.gitignore

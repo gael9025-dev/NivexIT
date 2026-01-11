@@ -100,30 +100,24 @@ const ContactMultiStep = () => {
     try {
       const validatedData = contactSchema.parse(formData);
 
-      // OPCIÓN 1: Guardar en Firestore (recomendado - gratis)
-      // Descomentar cuando configures Firestore:
-      /*
-      import { saveContact } from '@/integrations/firebase/client';
-      const result = await saveContact(validatedData);
-      if (!result.success) throw new Error("Error al guardar");
-      */
+      // Enviar a N8N Webhook
+      const webhookUrl = import.meta.env.VITE_N8N_WEBHOOK_URL;
 
-      // OPCIÓN 2: Enviar a webhook Make.com
-      // Reemplaza con tu webhook real de Make.com:
-      /*
-      const response = await fetch("https://hook.us2.make.com/TU_WEBHOOK_REAL", {
+      if (!webhookUrl) {
+        throw new Error("Webhook URL no configurada. Verifica tu archivo .env");
+      }
+
+      const response = await fetch(webhookUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(validatedData),
       });
-      if (!response.ok) throw new Error("Error al enviar");
-      */
 
-      // OPCIÓN 3 TEMPORAL: Solo mostrar en consola (para testing)
-      console.log("📧 Contacto recibido:", validatedData);
+      if (!response.ok) {
+        throw new Error("Error al enviar el formulario. Por favor intenta nuevamente.");
+      }
 
-      // Simular delay de red
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      console.log("✅ Contacto enviado exitosamente a N8N");
 
       setStep(4);
       toast({

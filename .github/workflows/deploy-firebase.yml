@@ -40,7 +40,7 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_NIVEX_CLOUD }}
           channelId: live
-          projectId: nivex-cloud
+          projectId: nivex-it
 
       # Deploy to preview channel on Pull Request
       - name: Deploy to Firebase Hosting (Preview)
@@ -49,4 +49,4 @@ jobs:
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_NIVEX_CLOUD }}
-          projectId: nivex-cloud
+          projectId: nivex-it
